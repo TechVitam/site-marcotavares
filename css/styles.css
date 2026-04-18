@@ -863,6 +863,7 @@ img {
    Responsivo
    ========================================================================== */
 @media (max-width: 992px) {
+    .hero { height: auto; min-height: 100vh; padding-top: 140px; padding-bottom: 60px; align-items: flex-start; }
     .hero h1 { font-size: 3rem; }
     .hero-container, .autoridade-container, .atuacao-layout { grid-template-columns: 1fr; }
     .diferenciais-grid, .reviews-grid { grid-template-columns: repeat(2, 1fr); }
@@ -896,6 +897,7 @@ img {
     .mobile-menu-btn { display: flex; }
     
     /* Hero */
+    .hero { padding-top: 120px; }
     .hero h1 { font-size: 2.5rem; }
     .hero-actions { flex-direction: column; width: 100%; }
     .hero-actions .btn { width: 100%; }
