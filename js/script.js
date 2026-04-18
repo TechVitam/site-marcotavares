@@ -75,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
        ========================================================================== */
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15 // Dispara quando 15% do elemento estiver visível
+        rootMargin: '50px',
+        threshold: 0.05 // Baixado de 0.15 para disparar mais rápido no mobile
     };
 
     const scrollObserver = new IntersectionObserver((entries, observer) => {
