@@ -183,12 +183,8 @@ img {
 }
 
 .logo img {
-    height: 40px;
+    height: 65px;
     transition: height var(--transition-fast);
-}
-
-/* Fix para logohorizontal.png que pode ter proporções diferentes */
-.logo img {
     object-fit: contain;
 }
 
@@ -468,18 +464,13 @@ img {
     z-index: 0;
 }
 
-.photo-placeholder {
+.autoridade-foto {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-primary-light);
-    color: var(--color-white);
-    font-family: var(--font-heading);
+    object-fit: cover;
     z-index: 1;
 }
 
