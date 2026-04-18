@@ -451,7 +451,6 @@ img {
     border-radius: var(--border-radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    aspect-ratio: 4/5;
     background-color: var(--color-bg-light);
 }
 
@@ -465,12 +464,10 @@ img {
 }
 
 .autoridade-foto {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
+    display: block;
     z-index: 1;
 }
 
