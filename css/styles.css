@@ -425,7 +425,7 @@ img {
    Autoridade / Posicionamento
    ========================================================================== */
 .section-autoridade {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-light);
 }
 
 .autoridade-container {
@@ -713,14 +713,14 @@ img {
    Google Reviews
    ========================================================================== */
 .section-reviews {
-    background-color: var(--color-bg-light);
+    background-color: var(--color-bg);
 }
 
 .google-badge {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-light);
     padding: 12px 24px;
     border-radius: 30px;
     margin-top: 16px;
@@ -750,42 +750,24 @@ img {
     flex-grow: 1;
 }
 
-.review-video-wrapper {
+.review-photo-wrapper {
     background-color: var(--color-bg-light);
     border-top: 1px solid rgba(0,0,0,0.05);
-}
-
-.review-video-wrapper .video-thumbnail {
-    height: 200px;
-    background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
-    background-size: cover;
-    background-position: center;
+    height: 220px;
+    overflow: hidden;
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
 }
 
-.review-video-wrapper .video-thumbnail::after {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.3);
-    transition: background-color var(--transition-fast);
+.review-photo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    transition: transform var(--transition-normal);
 }
 
-.review-video-wrapper:hover .video-thumbnail::after {
-    background-color: rgba(0,0,0,0.1);
-}
-
-.review-video-wrapper .video-caption {
-    padding: 16px;
-    text-align: center;
-    font-size: 0.95rem;
-    font-weight: 500;
-    color: var(--color-primary);
-    margin: 0;
+.review-card:hover .review-photo-wrapper img {
+    transform: scale(1.05);
 }
 
 .review-stars {
