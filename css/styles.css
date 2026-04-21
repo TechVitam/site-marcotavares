@@ -713,14 +713,14 @@ img {
    Google Reviews
    ========================================================================== */
 .section-reviews {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-light);
 }
 
 .google-badge {
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    background-color: var(--color-bg-light);
+    background-color: var(--color-bg);
     padding: 12px 24px;
     border-radius: 30px;
     margin-top: 16px;
@@ -728,19 +728,64 @@ img {
     color: var(--color-text);
 }
 
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 50px;
+.reviews-swiper {
+    padding: 20px 10px 60px; /* space for shadow and pagination */
+    margin-top: 40px;
 }
 
 .review-card {
     background-color: var(--color-white);
-    padding: 32px;
+    padding: 0;
     border-radius: var(--border-radius-lg);
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0,0,0,0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.review-content-top {
+    padding: 32px;
+    flex-grow: 1;
+}
+
+.review-video-wrapper {
+    background-color: var(--color-bg-light);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.review-video-wrapper .video-thumbnail {
+    height: 200px;
+    background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.review-video-wrapper .video-thumbnail::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.3);
+    transition: background-color var(--transition-fast);
+}
+
+.review-video-wrapper:hover .video-thumbnail::after {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.review-video-wrapper .video-caption {
+    padding: 16px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    margin: 0;
 }
 
 .review-stars {
@@ -761,6 +806,27 @@ img {
     font-weight: 600;
     color: var(--color-primary);
     font-size: 0.9rem;
+}
+
+/* Swiper Customizations */
+.reviews-swiper .swiper-button-next,
+.reviews-swiper .swiper-button-prev {
+    color: var(--color-accent);
+    background-color: var(--color-white);
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: var(--shadow-md);
+}
+
+.reviews-swiper .swiper-button-next:after,
+.reviews-swiper .swiper-button-prev:after {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.reviews-swiper .swiper-pagination-bullet-active {
+    background-color: var(--color-accent);
 }
 
 /* ==========================================================================

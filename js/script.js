@@ -125,4 +125,32 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ==========================================================================
+       Swiper Carousel (Google Reviews)
+       ========================================================================== */
+    const reviewsSwiper = new Swiper('.reviews-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 24,
+        loop: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 30,
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30,
+            }
+        }
+    });
+
 });
