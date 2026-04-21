@@ -788,6 +788,25 @@ img {
     color: var(--color-text);
     margin-bottom: 24px;
     line-height: 1.8;
+    max-height: 140px;
+    overflow-y: auto;
+    padding-right: 8px;
+}
+
+/* Custom scrollbar para textos longos */
+.review-text::-webkit-scrollbar {
+    width: 4px;
+}
+.review-text::-webkit-scrollbar-track {
+    background: rgba(0,0,0,0.02);
+    border-radius: 4px;
+}
+.review-text::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,0.15);
+    border-radius: 4px;
+}
+.review-text::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,0.3);
 }
 
 .review-author {
