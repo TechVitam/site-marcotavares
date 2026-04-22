@@ -98,33 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heroElements.forEach(el => el.classList.add('is-visible'));
     }, 100);
 
-    /* ==========================================================================
-       Video Modal
-       ========================================================================== */
-    const playVideoBtn = document.querySelector('.play-video-btn');
-    const videoModal = document.getElementById('video-modal');
-    const closeModal = document.querySelector('.close-modal');
 
-    if (playVideoBtn && videoModal && closeModal) {
-        playVideoBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            videoModal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // Previne scroll da página
-        });
-
-        closeModal.addEventListener('click', () => {
-            videoModal.classList.remove('show');
-            document.body.style.overflow = '';
-        });
-
-        // Fechar ao clicar fora do modal
-        window.addEventListener('click', (e) => {
-            if (e.target === videoModal) {
-                videoModal.classList.remove('show');
-                document.body.style.overflow = '';
-            }
-        });
-    }
 
     /* ==========================================================================
        Swiper Carousel (Google Reviews)
