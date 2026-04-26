@@ -189,8 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const classification = getClassification(total);
 
         // Hide form, show result
-        form.style.display = 'none';
-        document.querySelector('.calc-progress-wrapper').style.display = 'none';
+        document.querySelector('.calc-main-card').style.display = 'none';
         resultWrapper.style.display = 'block';
 
         // Scroll to result
@@ -242,8 +241,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('resetBtn').addEventListener('click', () => {
         form.reset();
-        form.style.display = '';
-        document.querySelector('.calc-progress-wrapper').style.display = '';
+        document.querySelector('.calc-main-card').style.display = 'block';
         resultWrapper.style.display = 'none';
 
         // Reset visual states
