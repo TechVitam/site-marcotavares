@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Eficiência do Joelho | Dr. Marco Tavares</title>
+    <meta name="description"
+        content="Avalie a funcionalidade do seu joelho com o Questionário Lysholm. Ferramenta clínica validada para medir dor, instabilidade e capacidade funcional do joelho.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/calculadora.css">
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header header--calc">
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <img src="images/logohorizontal.png" alt="Dr. Marco Tavares Logo">
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html">Página Inicial</a></li>
+                    <li><a href="index.html#especialista">A Especialidade</a></li>
+                    <li><a href="index.html#trajetoria">Trajetória</a></li>
+                    <li><a href="index.html#agendamento">Contato</a></li>
+                </ul>
+                <a href="index.html#agendamento" class="btn btn-primary">Agendar Consulta</a>
+            </nav>
+            <div class="mobile-menu-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="calc-hero">
+        <div class="calc-hero-bg"></div>
+        <div class="container calc-hero-container">
+            <div class="calc-hero-content scroll-animate fade-up">
+                <h1>Calculadora de Eficiência do <span class="highlight">Joelho</span></h1>
+                <p>Questionário Lysholm — Avalie a funcionalidade do seu joelho com base em critérios clínicos reconhecidos internacionalmente.</p>
+                <p class="calc-hero-ref">PECCIN, M.S.; CICONELLI, R.; COHEN, M. Questionário específico para sintomas do joelho "Lysholm Knee Scoring Scale". Acta Ortopédica Brasileira, v.14, n.5, 2006.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Section -->
+    <section class="section calc-section">
+        <div class="container">
+            <!-- Progress Bar -->
+            <div class="calc-progress-wrapper scroll-animate fade-up">
+                <div class="calc-progress-bar">
+                    <div class="calc-progress-fill" id="progressFill"></div>
+                </div>
+                <span class="calc-progress-text" id="progressText">Passo 1 de 9</span>
+            </div>
+
+            <form id="lysholmForm" class="calc-form">
+                <!-- DADOS DO PACIENTE -->
+                <div class="calc-step active" data-step="0">
+                    <div class="calc-category">
+                        <div class="calc-category-header">
+                            <div class="calc-category-number">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </div>
+                            <div>
+                                <h2 class="calc-category-title">Identificação</h2>
+                                <span class="calc-category-points">Preencha para iniciar</span>
+                            </div>
+                        </div>
+                        <div class="calc-options" style="gap: 20px;">
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                                <label for="pacienteNome" style="font-weight: 500;">Nome Completo</label>
+                                <input type="text" id="pacienteNome" name="pacienteNome" required placeholder="Ex: João da Silva" style="padding: 14px 16px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 1rem; width: 100%;">
+                            </div>
+                            <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                                <label for="pacienteIdade" style="font-weight: 500;">Idade</label>
+                                <input type="number" id="pacienteIdade" name="pacienteIdade" required placeholder="Ex: 45" style="padding: 14px 16px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; font-family: inherit; font-size: 1rem; width: 100%;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1. MANCAR -->
+                <div class="calc-step" data-step="1" style="display: none;">
+                    <div class="calc-category" data-category="mancar">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">01</div>
+                        <div>
+                            <h2 class="calc-category-title">Mancar</h2>
+                            <span class="calc-category-points">5 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-mancar-5">
+                            <input type="radio" name="mancar" value="5">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nunca</span>
+                            <span class="calc-option-score">5 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-mancar-3">
+                            <input type="radio" name="mancar" value="3">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Leve ou periodicamente</span>
+                            <span class="calc-option-score">3 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-mancar-0">
+                            <input type="radio" name="mancar" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Intenso e constantemente</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 2. APOIO -->
+                <div class="calc-step" data-step="2" style="display: none;">
+                    <div class="calc-category" data-category="apoio">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">02</div>
+                        <div>
+                            <h2 class="calc-category-title">Apoio</h2>
+                            <span class="calc-category-points">5 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-apoio-5">
+                            <input type="radio" name="apoio" value="5">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhum</span>
+                            <span class="calc-option-score">5 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-apoio-2">
+                            <input type="radio" name="apoio" value="2">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Bengala ou muleta</span>
+                            <span class="calc-option-score">2 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-apoio-0">
+                            <input type="radio" name="apoio" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Impossível</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 3. TRAVAMENTO -->
+                <div class="calc-step" data-step="3" style="display: none;">
+                    <div class="calc-category" data-category="travamento">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">03</div>
+                        <div>
+                            <h2 class="calc-category-title">Travamento</h2>
+                            <span class="calc-category-points">15 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-travamento-15">
+                            <input type="radio" name="travamento" value="15">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhum travamento ou sensação de travamento</span>
+                            <span class="calc-option-score">15 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-travamento-10">
+                            <input type="radio" name="travamento" value="10">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Tem sensação, mas sem travamento</span>
+                            <span class="calc-option-score">10 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-travamento-6">
+                            <input type="radio" name="travamento" value="6">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Travamento ocasional</span>
+                            <span class="calc-option-score">6 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-travamento-2">
+                            <input type="radio" name="travamento" value="2">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Frequente</span>
+                            <span class="calc-option-score">2 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-travamento-0">
+                            <input type="radio" name="travamento" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Articulação travada</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 4. INSTABILIDADE -->
+                <div class="calc-step" data-step="4" style="display: none;">
+                    <div class="calc-category" data-category="instabilidade">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">04</div>
+                        <div>
+                            <h2 class="calc-category-title">Instabilidade</h2>
+                            <span class="calc-category-points">25 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-instabilidade-25">
+                            <input type="radio" name="instabilidade" value="25">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nunca falseia</span>
+                            <span class="calc-option-score">25 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-instabilidade-20">
+                            <input type="radio" name="instabilidade" value="20">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Raramente, durante atividades atléticas ou outros exercícios pesados</span>
+                            <span class="calc-option-score">20 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-instabilidade-15">
+                            <input type="radio" name="instabilidade" value="15">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Frequentemente durante atividades atléticas ou outros exercícios pesados (ou incapaz de participação)</span>
+                            <span class="calc-option-score">15 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-instabilidade-10">
+                            <input type="radio" name="instabilidade" value="10">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Ocasionalmente em atividades diárias</span>
+                            <span class="calc-option-score">10 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-instabilidade-5">
+                            <input type="radio" name="instabilidade" value="5">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Frequentemente em atividades diárias</span>
+                            <span class="calc-option-score">5 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-instabilidade-0">
+                            <input type="radio" name="instabilidade" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">A cada passo</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 5. DOR -->
+                <div class="calc-step" data-step="5" style="display: none;">
+                    <div class="calc-category" data-category="dor">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">05</div>
+                        <div>
+                            <h2 class="calc-category-title">Dor</h2>
+                            <span class="calc-category-points">25 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-dor-25">
+                            <input type="radio" name="dor" value="25">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhuma</span>
+                            <span class="calc-option-score">25 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-dor-20">
+                            <input type="radio" name="dor" value="20">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Inconstante ou leve durante exercícios pesados</span>
+                            <span class="calc-option-score">20 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-dor-15">
+                            <input type="radio" name="dor" value="15">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Marcada durante exercícios pesados</span>
+                            <span class="calc-option-score">15 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-dor-10">
+                            <input type="radio" name="dor" value="10">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Marcada durante ou após caminhar mais de 2 km</span>
+                            <span class="calc-option-score">10 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-dor-5">
+                            <input type="radio" name="dor" value="5">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Marcada durante ou após caminhar menos de 2 km</span>
+                            <span class="calc-option-score">5 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-dor-0">
+                            <input type="radio" name="dor" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Constante</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 6. INCHAÇO -->
+                <div class="calc-step" data-step="6" style="display: none;">
+                    <div class="calc-category" data-category="inchaco">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">06</div>
+                        <div>
+                            <h2 class="calc-category-title">Inchaço</h2>
+                            <span class="calc-category-points">10 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-inchaco-10">
+                            <input type="radio" name="inchaco" value="10">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhum</span>
+                            <span class="calc-option-score">10 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-inchaco-6">
+                            <input type="radio" name="inchaco" value="6">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Com exercícios pesados</span>
+                            <span class="calc-option-score">6 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-inchaco-2">
+                            <input type="radio" name="inchaco" value="2">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Com exercícios comuns</span>
+                            <span class="calc-option-score">2 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-inchaco-0">
+                            <input type="radio" name="inchaco" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Constante</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 7. SUBINDO ESCADAS -->
+                <div class="calc-step" data-step="7" style="display: none;">
+                    <div class="calc-category" data-category="escadas">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">07</div>
+                        <div>
+                            <h2 class="calc-category-title">Subindo Escadas</h2>
+                            <span class="calc-category-points">10 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-escadas-10">
+                            <input type="radio" name="escadas" value="10">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhum problema</span>
+                            <span class="calc-option-score">10 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-escadas-6">
+                            <input type="radio" name="escadas" value="6">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Levemente prejudicado</span>
+                            <span class="calc-option-score">6 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-escadas-2">
+                            <input type="radio" name="escadas" value="2">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Um degrau cada vez</span>
+                            <span class="calc-option-score">2 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-escadas-0">
+                            <input type="radio" name="escadas" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Impossível</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- 8. AGACHAMENTO -->
+                <div class="calc-step" data-step="8" style="display: none;">
+                    <div class="calc-category" data-category="agachamento">
+                        <div class="calc-category-header">
+                        <div class="calc-category-number">08</div>
+                        <div>
+                            <h2 class="calc-category-title">Agachamento</h2>
+                            <span class="calc-category-points">5 pontos</span>
+                        </div>
+                    </div>
+                    <div class="calc-options">
+                        <label class="calc-option" id="option-agachamento-5">
+                            <input type="radio" name="agachamento" value="5">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Nenhum problema</span>
+                            <span class="calc-option-score">5 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-agachamento-4">
+                            <input type="radio" name="agachamento" value="4">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Levemente prejudicado</span>
+                            <span class="calc-option-score">4 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-agachamento-2">
+                            <input type="radio" name="agachamento" value="2">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Não além de 90°</span>
+                            <span class="calc-option-score">2 pts</span>
+                        </label>
+                        <label class="calc-option" id="option-agachamento-0">
+                            <input type="radio" name="agachamento" value="0">
+                            <span class="calc-option-radio"></span>
+                            <span class="calc-option-text">Impossível</span>
+                            <span class="calc-option-score">0 pts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="calc-nav-wrapper scroll-animate fade-up" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                    <button type="button" class="btn btn-outline-dark" id="prevBtn" style="display: none;">Voltar</button>
+                    <button type="button" class="btn btn-primary" id="nextBtn" style="margin-left: auto;">Avançar</button>
+                    <button type="submit" class="btn btn-primary btn-large calc-submit-btn" id="calcSubmitBtn" style="display: none; margin-left: auto;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                        </svg>
+                        Calcular Resultado
+                    </button>
+                </div>
+            </form>
+
+            <!-- Result -->
+            <div class="calc-result-wrapper" id="resultWrapper" style="display: none;">
+                <div class="calc-result scroll-animate fade-up">
+                    <div class="calc-result-header">
+                        <h2>Resultado da Avaliação</h2>
+                        <p>Questionário Lysholm — Knee Scoring Scale</p>
+                    </div>
+
+                    <div class="calc-result-score-container">
+                        <div class="calc-result-ring">
+                            <svg viewBox="0 0 200 200" class="calc-ring-svg">
+                                <circle cx="100" cy="100" r="88" class="calc-ring-bg"/>
+                                <circle cx="100" cy="100" r="88" class="calc-ring-fill" id="ringFill"
+                                    stroke-dasharray="553"
+                                    stroke-dashoffset="553"/>
+                            </svg>
+                            <div class="calc-result-score-value">
+                                <span class="calc-score-number" id="scoreNumber">0</span>
+                                <span class="calc-score-max">/ 100</span>
+                            </div>
+                        </div>
+                        <div class="calc-result-classification" id="resultClassification">
+                            <span class="calc-classification-badge" id="classificationBadge">—</span>
+                            <p class="calc-classification-desc" id="classificationDesc"></p>
+                        </div>
+                    </div>
+
+                    <!-- Score Breakdown -->
+                    <div class="calc-breakdown">
+                        <h3>Detalhamento por Categoria</h3>
+                        <div class="calc-breakdown-grid" id="breakdownGrid"></div>
+                    </div>
+
+                    <!-- Score Legend -->
+                    <div class="calc-legend">
+                        <h3>Escala de Classificação</h3>
+                        <div class="calc-legend-items">
+                            <div class="calc-legend-item calc-legend-excelente">
+                                <span class="calc-legend-color"></span>
+                                <span class="calc-legend-label">Excelente</span>
+                                <span class="calc-legend-range">95 – 100</span>
+                            </div>
+                            <div class="calc-legend-item calc-legend-bom">
+                                <span class="calc-legend-color"></span>
+                                <span class="calc-legend-label">Bom</span>
+                                <span class="calc-legend-range">84 – 94</span>
+                            </div>
+                            <div class="calc-legend-item calc-legend-regular">
+                                <span class="calc-legend-color"></span>
+                                <span class="calc-legend-label">Regular</span>
+                                <span class="calc-legend-range">65 – 83</span>
+                            </div>
+                            <div class="calc-legend-item calc-legend-ruim">
+                                <span class="calc-legend-color"></span>
+                                <span class="calc-legend-label">Ruim</span>
+                                <span class="calc-legend-range">< 64</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CTA -->
+                    <div class="calc-result-cta">
+                        <p>Deseja uma avaliação especializada e individualizada?</p>
+                        <div class="calc-result-actions">
+                            <a href="index.html#agendamento" class="btn btn-primary btn-large">Agendar com Dr. Marco Tavares</a>
+                            <button type="button" class="btn btn-outline-dark" id="resetBtn">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="1 4 1 10 7 10"/>
+                                    <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                                </svg>
+                                Refazer Questionário
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Minimal Footer -->
+    <footer class="footer calc-footer">
+        <div class="container">
+            <div class="footer-copyright">
+                <p>&copy; 2026 Dr. Marco Tavares. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/calculadora.js"></script>
+</body>
+
+</html>
