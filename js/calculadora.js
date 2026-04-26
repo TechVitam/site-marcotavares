@@ -114,6 +114,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     form.addEventListener('input', validateStep);
     
+    // Prevent Enter from submitting and trigger Next instead
+    form.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            if (!nextBtn.disabled && nextBtn.style.display !== 'none') {
+                nextBtn.click();
+            } else if (!submitBtn.disabled && submitBtn.style.display !== 'none') {
+                submitBtn.click();
+            }
+        }
+    });
+
     form.addEventListener('change', (e) => {
         if (e.target.type === 'radio') {
             const name = e.target.name;
