@@ -58,15 +58,16 @@
                 <p class="calc-hero-ref">PECCIN, M.S.; CICONELLI, R.; COHEN, M. Questionário específico para sintomas do joelho "Lysholm Knee Scoring Scale". Acta Ortopédica Brasileira, v.14, n.5, 2006.</p>
             </div>
             <div class="calc-hero-form">
-                <!-- Progress Bar -->
-                <div class="calc-progress-wrapper" style="color: white;">
-                    <div class="calc-progress-bar" style="background-color: rgba(255,255,255,0.2);">
-                        <div class="calc-progress-fill" id="progressFill" style="background: var(--color-white);"></div>
+                <div class="calc-main-card">
+                    <!-- Progress Bar -->
+                    <div class="calc-progress-wrapper">
+                        <div class="calc-progress-bar">
+                            <div class="calc-progress-fill" id="progressFill"></div>
+                        </div>
+                        <span class="calc-progress-text" id="progressText">Passo 1 de 9</span>
                     </div>
-                    <span class="calc-progress-text" id="progressText" style="color: rgba(255,255,255,0.8);">Passo 1 de 9</span>
-                </div>
 
-            <form id="lysholmForm" class="calc-form">
+                <form id="lysholmForm" class="calc-form">
                 <!-- DADOS DO PACIENTE -->
                 <div class="calc-step active" data-step="0">
                     <div class="calc-category">
@@ -423,7 +424,7 @@
                 </div>
 
                 <!-- Navigation Controls -->
-                <div class="calc-nav-wrapper" style="display: flex; justify-content: space-between; margin-top: 10px;">
+                <div class="calc-nav-wrapper" style="display: flex; justify-content: space-between;">
                     <button type="button" class="btn btn-outline-dark" id="prevBtn" style="display: none;">Voltar</button>
                     <button type="button" class="btn btn-primary" id="nextBtn" style="margin-left: auto;">Avançar</button>
                     <button type="submit" class="btn btn-primary btn-large calc-submit-btn" id="calcSubmitBtn" style="display: none; margin-left: auto;">
@@ -434,6 +435,7 @@
                     </button>
                 </div>
             </form>
+            </div> <!-- End calc-main-card -->
 
             <!-- Result -->
             <div class="calc-result-wrapper" id="resultWrapper" style="display: none;">
