@@ -224,19 +224,6 @@ document.addEventListener('DOMContentLoaded', () => {
             // Animate number counting
             animateCounter(scoreNumber, 0, total, 1200);
         }, 200);
-
-        // Breakdown
-        const grid = document.getElementById('breakdownGrid');
-        grid.innerHTML = '';
-        categories.forEach(cat => {
-            const item = document.createElement('div');
-            item.className = 'calc-breakdown-item';
-            item.innerHTML = `
-                <span class="calc-breakdown-label">${categoryLabels[cat]}</span>
-                <span class="calc-breakdown-value">${scores[cat]} / ${maxScores[cat]}</span>
-            `;
-            grid.appendChild(item);
-        });
     }
 
     function animateCounter(element, start, end, duration) {

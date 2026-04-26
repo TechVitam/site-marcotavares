@@ -57,19 +57,14 @@
                 <p>Questionário Lysholm — Avalie a funcionalidade do seu joelho com base em critérios clínicos reconhecidos internacionalmente.</p>
                 <p class="calc-hero-ref">PECCIN, M.S.; CICONELLI, R.; COHEN, M. Questionário específico para sintomas do joelho "Lysholm Knee Scoring Scale". Acta Ortopédica Brasileira, v.14, n.5, 2006.</p>
             </div>
-        </div>
-    </section>
-
-    <!-- Calculator Section -->
-    <section class="section calc-section">
-        <div class="container">
-            <!-- Progress Bar -->
-            <div class="calc-progress-wrapper scroll-animate fade-up">
-                <div class="calc-progress-bar">
-                    <div class="calc-progress-fill" id="progressFill"></div>
+            <div class="calc-hero-form">
+                <!-- Progress Bar -->
+                <div class="calc-progress-wrapper" style="color: white;">
+                    <div class="calc-progress-bar" style="background-color: rgba(255,255,255,0.2);">
+                        <div class="calc-progress-fill" id="progressFill" style="background: var(--color-white);"></div>
+                    </div>
+                    <span class="calc-progress-text" id="progressText" style="color: rgba(255,255,255,0.8);">Passo 1 de 9</span>
                 </div>
-                <span class="calc-progress-text" id="progressText">Passo 1 de 9</span>
-            </div>
 
             <form id="lysholmForm" class="calc-form">
                 <!-- DADOS DO PACIENTE -->
@@ -467,39 +462,6 @@
                         </div>
                     </div>
 
-                    <!-- Score Breakdown -->
-                    <div class="calc-breakdown">
-                        <h3>Detalhamento por Categoria</h3>
-                        <div class="calc-breakdown-grid" id="breakdownGrid"></div>
-                    </div>
-
-                    <!-- Score Legend -->
-                    <div class="calc-legend">
-                        <h3>Escala de Classificação</h3>
-                        <div class="calc-legend-items">
-                            <div class="calc-legend-item calc-legend-excelente">
-                                <span class="calc-legend-color"></span>
-                                <span class="calc-legend-label">Excelente</span>
-                                <span class="calc-legend-range">95 – 100</span>
-                            </div>
-                            <div class="calc-legend-item calc-legend-bom">
-                                <span class="calc-legend-color"></span>
-                                <span class="calc-legend-label">Bom</span>
-                                <span class="calc-legend-range">84 – 94</span>
-                            </div>
-                            <div class="calc-legend-item calc-legend-regular">
-                                <span class="calc-legend-color"></span>
-                                <span class="calc-legend-label">Regular</span>
-                                <span class="calc-legend-range">65 – 83</span>
-                            </div>
-                            <div class="calc-legend-item calc-legend-ruim">
-                                <span class="calc-legend-color"></span>
-                                <span class="calc-legend-label">Ruim</span>
-                                <span class="calc-legend-range">< 64</span>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- CTA -->
                     <div class="calc-result-cta">
                         <p>Deseja uma avaliação especializada e individualizada?</p>
@@ -516,6 +478,8 @@
                     </div>
                 </div>
             </div>
+            
+            </div> <!-- End calc-hero-form -->
         </div>
     </section>
 
