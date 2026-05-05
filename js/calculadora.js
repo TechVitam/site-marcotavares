@@ -102,7 +102,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (currentStep === 0) {
             const nome = document.getElementById('pacienteNome').value.trim();
             const idade = document.getElementById('pacienteIdade').value.trim();
-            isValid = nome !== '' && idade !== '';
+            const whatsapp = document.getElementById('pacienteWhatsapp').value.replace(/\D/g, '');
+            // Valida se os campos não estão vazios e se o whatsapp tem entre 10 e 11 dígitos
+            isValid = nome !== '' && idade !== '' && (whatsapp.length === 10 || whatsapp.length === 11);
         } else {
             const catName = categories[currentStep - 1];
             isValid = !!form.querySelector(`input[name="${catName}"]:checked`);
@@ -113,6 +115,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     form.addEventListener('input', validateStep);
+
+    // Máscara de WhatsApp
+    const whatsappInput = document.getElementById('pacienteWhatsapp');
+    if (whatsappInput) {
+        whatsappInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            let formattedValue = '';
+            
+            if (value.length > 0) {
+                formattedValue += '(' + value.substring(0, 2);
+            }
+            if (value.length > 2) {
+                formattedValue += ') ' + value.substring(2, 7);
+            }
+            if (value.length > 7) {
+                formattedValue += '-' + value.substring(7, 11);
+            }
+            
+            e.target.value = formattedValue;
+        });
+    }
     
     // Prevent Enter from submitting and trigger Next instead
     form.addEventListener('keydown', (e) => {
@@ -161,9 +184,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     updateStepVisibility();
 
+    // A API interna da Vercel que foi criada para se comunicar com o Google Cloud
+    const WEBHOOK_URL = '/api/submit-lead';
+
     // Submit
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
+
+        // Mudar o texto do botão para indicar carregamento
+        const originalBtnHTML = submitBtn.innerHTML;
+        submitBtn.innerHTML = 'Calculando...';
+        submitBtn.disabled = true;
 
         let total = 0;
         const scores = {};
@@ -175,7 +206,36 @@ document.addEventListener('DOMContentLoaded', () => {
             total += val;
         });
 
-        showResult(total, scores);
+        const leadData = {
+            nome: document.getElementById('pacienteNome').value.trim(),
+            idade: document.getElementById('pacienteIdade').value.trim(),
+            whatsapp: document.getElementById('pacienteWhatsapp').value.trim(),
+            score_total: total,
+            classificacao: getClassification(total).label,
+            respostas_detalhadas: scores,
+            data_hora: new Date().toISOString()
+        };
+
+        try {
+            if (WEBHOOK_URL && WEBHOOK_URL !== 'COLE_AQUI_A_URL_DO_SEU_WEBHOOK') {
+                await fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(leadData)
+                });
+            } else {
+                console.warn('Webhook URL não configurada. Os dados não foram enviados.');
+            }
+        } catch (error) {
+            console.error('Erro ao enviar dados para o Webhook:', error);
+            // Continua para mostrar o resultado mesmo se falhar
+        } finally {
+            submitBtn.innerHTML = originalBtnHTML;
+            submitBtn.disabled = false;
+            showResult(total, scores);
+        }
     });
 
     function getClassification(score) {
