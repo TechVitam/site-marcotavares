@@ -39,23 +39,26 @@ export default async function handler(req, res) {
     // Substitua pelo ID da sua planilha, que estará nas variáveis da Vercel
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
-    // A linha que será inserida na planilha
     const r = respostas_detalhadas || {};
+    
+    // Formatando as respostas em formato de lista com quebras de linha
+    const respostasFormatadas = [
+      `Mancar: ${r.mancar !== undefined ? r.mancar : "N/A"}`,
+      `Apoio: ${r.apoio !== undefined ? r.apoio : "N/A"}`,
+      `Travamento: ${r.travamento !== undefined ? r.travamento : "N/A"}`,
+      `Instabilidade: ${r.instabilidade !== undefined ? r.instabilidade : "N/A"}`,
+      `Dor: ${r.dor !== undefined ? r.dor : "N/A"}`,
+      `Inchaço: ${r.inchaco !== undefined ? r.inchaco : "N/A"}`,
+      `Escadas: ${r.escadas !== undefined ? r.escadas : "N/A"}`,
+      `Agachamento: ${r.agachamento !== undefined ? r.agachamento : "N/A"}`
+    ].join('\n');
+
     const row = [
-      data_hora || new Date().toISOString(),
       nome || "",
       idade || "",
       whatsapp || "",
       score_total || 0,
-      classificacao || "",
-      r.mancar !== undefined ? r.mancar : "",
-      r.apoio !== undefined ? r.apoio : "",
-      r.travamento !== undefined ? r.travamento : "",
-      r.instabilidade !== undefined ? r.instabilidade : "",
-      r.dor !== undefined ? r.dor : "",
-      r.inchaco !== undefined ? r.inchaco : "",
-      r.escadas !== undefined ? r.escadas : "",
-      r.agachamento !== undefined ? r.agachamento : ""
+      respostasFormatadas
     ];
 
     // Fazendo a requisição para a API do Google Sheets
